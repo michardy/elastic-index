@@ -1,0 +1,7 @@
+[package]
+name = "elastic-index"
+version = "0.1.0"
+authors = ["Michael Hardy <98.michael.hardy@gmail.com>"]
+edition = "2018"
+
+[dependencies]
