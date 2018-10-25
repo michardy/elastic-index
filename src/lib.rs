@@ -1,6 +1,5 @@
 extern crate reqwest;
 extern crate serde;
-extern crate serde_json;
 
 use serde::Serialize;
 
@@ -37,8 +36,9 @@ impl Index {
 	pub fn index<T: Serialize>(self, client: &Client, doc: T) {
 		let url = format!("{}/{}/_doc", client.host, self.name);
 		client.client.post(&url)
-			.body(serde_json::to_string(&doc).unwrap())
-			.send().unwrap();
+			.json(&doc)
+			.send()
+			.unwrap();
 	}
 }
 
