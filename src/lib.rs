@@ -36,7 +36,7 @@ impl Index {
 	/// Index an object to create Elasticsearch document
 	pub fn index<T: Serialize>(self, client: &Client, doc: T) {
 		let url = format!("{}/{}/_doc", client.host, self.name);
-		client.client.put(&url)
+		client.client.post(&url)
 			.body(serde_json::to_string(&doc).unwrap())
 			.send().unwrap();
 	}
